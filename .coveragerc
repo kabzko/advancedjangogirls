@@ -1,0 +1,16 @@
+[run]
+
+# https://coverage.readthedocs.io/en/latest/branch.html#how-to-measure-branch-coverage
+branch = true
+
+
+# https://coverage.readthedocs.io/en/latest/source.html#execution
+include = 
+    blog/*
+
+omit = 
+    */migrations/*
+    */tests/*
+    *init*
+    */debug/*
+    manage.py
