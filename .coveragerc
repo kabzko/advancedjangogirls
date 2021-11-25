@@ -1,0 +1,21 @@
+[run]
+
+# https://coverage.readthedocs.io/en/latest/branch.html#how-to-measure-branch-coverage
+branch = true
+
+
+# https://coverage.readthedocs.io/en/latest/source.html#execution
+include = 
+    blog/*
+    api/*
+
+omit = 
+    */migrations/*
+    */tests/*
+    *init*
+    */debug/*
+    manage.py
+
+[report]
+exclude_lines =
+    pragma no cover
