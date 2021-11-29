@@ -17,19 +17,24 @@ class Post(models.Model):
 
     def get_approved_comments(self)-> QuerySet:
         """Get approved comments"""
-        return self.comments.filter(approved_comment=True)
+        return self.comments.filter()
+    
+    def get_approved_comments_length(self)-> int:
+        """Get approved comments length"""
+        return self.comments.filter(approved_comment=True).count()
     
     def get_record(self)-> dict:
         """Get record dictionary"""
         try:
             comments = self.get_comments()
             post = {
-                "ids": self.id,
+                "id": self.id,
+                "author": self.author.id,
                 "title": self.title,
                 "text": self.text,
                 "created_date": self.created_date,
                 "published_date": self.published_date,
-                "comments_count": len(comments),
+                "comments_count": self.get_approved_comments_length(),
                 "comments": comments,
             }
             return post
@@ -68,6 +73,7 @@ class Comment(models.Model):
             comment = {
                 "id": self.id,
                 "post": self.post.id,
+                "author": self.author,
                 "text": self.text,
                 "created_date": self.created_date,
                 "approved_comment": self.approved_comment,

@@ -12,7 +12,7 @@ class PostListAPI(APIView):
     """Retrieve published post instance."""
     def get(self, request, format=None):
         """List all published post"""
-        posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
         published_post_list = []
         for post in posts:
             published_post_list.append(post.get_record())
@@ -22,7 +22,7 @@ class PostDraftListAPI(APIView):
     """Create and retrieve unpublished post instance."""
     def get(self, request, format=None):
         """List all unpublished post"""
-        posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
+        posts = Post.objects.filter(published_date__isnull=True).order_by('-created_date')
         published_post_list = []
         for post in posts:
             published_post_list.append(post.get_record())
