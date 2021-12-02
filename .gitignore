@@ -30,3 +30,6 @@ $RECYCLE.BIN/
 .vscode/
 .history/
 *.code-workspace
+
+/ui/react-flux/node_modules
+/ui/react-redux/node_modules

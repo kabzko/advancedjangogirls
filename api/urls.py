@@ -8,4 +8,5 @@ urlpatterns = [
     path('comment/', views.CommentAPI.as_view()),
     path('comment/<int:pk>/', views.CommentAPI.as_view()),
     path('api-token-auth/login/', views.LoginAPI.as_view()),
+    path('api-token-auth/logout/', views.LogoutAPI.as_view()),
 ]

@@ -18,7 +18,6 @@ from django.urls import path, re_path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.shortcuts import render
-from django.views.generic import TemplateView
 from django.contrib.auth import views
 
 
@@ -27,7 +26,6 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('accounts/login/', views.LoginView.as_view(), name='login'),
     path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
-    re_path('react/(?P<path>.*)$',
-            TemplateView.as_view(template_name='index.html')),
+    path('react_flux/', include('ui.urls')),
     path('api/', include('api.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
